@@ -1,0 +1,26 @@
+[
+    {
+        "todo": "have breakfast",
+        "status": "true"
+    },
+    {
+        "todo1": "have lunch",
+        "status": "true"
+    },
+    {
+        "todo": "go somewhere",
+        "status": "false"
+    },
+    {
+        "todo": "have dinner",
+        "status": "false"
+    },
+    {
+        "todo": "fish",
+        "status": "false"
+    },
+    {
+        "todo": "fissssss",
+        "status": "true"
+    }
+]

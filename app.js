@@ -28,6 +28,29 @@ function loadData(status) {
 
     }
 }
+function deleteData(index){
+    const data = loadData(index)
+    data.splice(index,1)
+  
+    saveData(data)
+}
+
+yargs.command({
+    command:'delete',
+    describe:"delete item todos",
+    builder:{
+        index:{
+            describe: "Status of todo",
+            demandOption: false,
+            type: 'int',
+            alias: "d",
+        }
+    },
+    
+    handler: function({index}){
+           deleteData(index)
+    }
+})
     function saveData(data) {
         fs.writeFileSync("data.json", JSON.stringify(data))
     }
@@ -52,25 +75,13 @@ function loadData(status) {
                 default: "all"
             }
         },
-        handler: function(args){
+        handler: function({status}){
             console.log(chalk.red('listing of todos'));
             
-                const data = loadData(args.status)
+                const data = loadData(status)
                 data.forEach(({ todo, status },index) => console.log(
                     `index:${index}  todo:${todo}    status:${status}`)
                 )
-        }
-    })
-   
-    
-
-    yargs.command({
-        command:'flist',
-        describe:"list filter",
-        
-        handler: function(status){
-            console.log(chalk.red('filter list of todos'));
-            filterList(status)    
         }
     })
 
@@ -98,3 +109,5 @@ handler:function({todo,status}){
 }
     })
     yargs.parse()
+
+    // 
